@@ -1,5 +1,7 @@
 # Climate Dynamics
 
+You must use jasmin for this tutorial.
+
 Imagine you work for the Met Office and a client (e.g., from agriculture, utilities companies, finance) has asked you predict the temperature in Oxford, UK on 19th November 2025 and on 19th November 2100. You have access to data from climate model simulations (CMIP), but you can use data from other sources if you wish. The different timescales require different approaches.
 
 Think about: 

@@ -9,19 +9,25 @@ Think about:
 * What information would you provide to the client? 
 * What sources of uncertainty do you expect in your prediction?
 
+You can either work locally or on Jasmin. 
+### Set up: local
+
+
+### Set up: Jasmin
+Go to [https://notebooks.jasmin.ac.uk/](https://notebooks.jasmin.ac.uk/) and start a jupyter notebook. Packages should already be installed on `jaspy`. You should automatically have access to the CMIP data. 
 
 ## Time series approach
 
 To predict the temperature at a specific location on 19th November 2025, we can time series data to inform us about the historical temperatures in this location.
 
-There is some CMIP data already pre-processed in the `./data/` directory. This contains monthly averaged data from the historical simulation of the Met Office climate model HadGEM. The jupyter notebook PredictTimeseriesSetup.ipynb will help you get started with this data
+There is some CMIP data already pre-processed in the `./data/` directory. This contains monthly averaged data from the historical simulation of the Met Office climate model HadGEM. The jupyter notebook [PredictTimeseriesSetup.ipynb](PredictTimeseriesSetup.ipynb) will help you get started with this data
 ```python
 data_path = "./data/"
 filename = f"{data_path}t_CMIP6_historical_HadGEM3-GC31-LL_mon_195001-201412_UK.nc"
 ds = xr.open_dataset(filename)
 ```
 
-If you are using jasmin, the jupyter notebook PredictTimeseriesJasmin.ipynb will help you open the dataset. This data comes from a historical simulation of the Met Office coupled climate model UKESM. 
+If you are using jasmin, the jupyter notebook [PredictTimeseriesJasmin.ipynb](PredictTimeseriesJasmin.ipynb) will help you open the dataset. This data comes from a historical simulation of the Met Office coupled climate model UKESM. 
 
 ```python
 data_path = "/badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/day/tas/gn/v20190627/"

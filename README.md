@@ -9,7 +9,8 @@ Think about:
 * What information would you provide to the client? 
 * What sources of uncertainty do you expect in your prediction?
 
-You can either work locally or on Jasmin. 
+You can either work locally or on Jasmin. Using Jasmin is easier and recommended as you will have more options, but the CMIP6 archive server has been down recently so the backup option is to run these locally using pre-processed files. 
+
 ### Set up: local
 To use these notebooks on your local macbook, you will need to have a few packages. You can use the same conda environment `iecdt_eda` you set up in week 3:
 ```zsh
@@ -18,7 +19,7 @@ conda activate iecdt_eda
 ```
 
 ### Set up: Jasmin
-Go to [https://notebooks.jasmin.ac.uk/](https://notebooks.jasmin.ac.uk/) and start a jupyter notebook. Packages should already be installed on `jaspy`. You should automatically have access to the CMIP data. 
+Go to [https://notebooks.jasmin.ac.uk/](https://notebooks.jasmin.ac.uk/) and start a jupyter notebook. Packages should already be installed on `jaspy`. You should automatically have access to the CMIP data at `/badc/cmip6/data/CMIP6/CMIP/`. 
 
 ## Time series approach
 
@@ -53,7 +54,7 @@ ds_PI = xr.open_dataset(filenames_PI)
 # 4xCO2 simulation
 data_path_4xCO2 = "/badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/abrupt-4xCO2/r1i1p1f2/Amon/tas/gn/v20190406/"
 filename_4xCO2 = f"{data_path_4xCO2}tas_Amon_UKESM1-0-LL_abrupt-4xCO2_r1i1p1f2_gn_195001-199912.nc"
-ds_4xCO2 = xr.open_mfdataset(filename_4xCO2)
+ds_4xCO2 = xr.open_dataset(filename_4xCO2)
 ```
 
 With a technique called "Pattern Scaling", you can interpolate between these two to estimate the global map of climate change for a given CO2 forcing scenario (Santer, 1990, Mitchell, 2003, Tebaldi & Arblaster, 2014). Pattern scaling assumes that the pattern of warming remains constant but scales linearly by a scaler variable, such as global mean temperature. The steps are:

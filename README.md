@@ -25,14 +25,7 @@ Go to [https://notebooks.jasmin.ac.uk/](https://notebooks.jasmin.ac.uk/) and sta
 
 To predict the temperature at a specific location on 19th November 2025, we can time series data to inform us about the historical temperatures in this location.
 
-There is some CMIP data already pre-processed in the `./data/` directory. This contains monthly averaged data from the historical simulation of the Met Office climate model HadGEM. The jupyter notebook [PredictTimeseriesSetup.ipynb](PredictTimeseriesSetup.ipynb) will help you get started with this data
-```python
-data_path = "./data/"
-filename = f"{data_path}t_CMIP6_historical_HadGEM3-GC31-LL_mon_195001-201412_UK.nc"
-ds = xr.open_dataset(filename)
-```
-
-If you are using jasmin, the jupyter notebook [PredictTimeseriesJasmin.ipynb](PredictTimeseriesJasmin.ipynb) will help you open the dataset. This data comes from a historical simulation of the Met Office coupled climate model UKESM. 
+It is recommended to use jasmin. The jupyter notebook [jasmin/PredictTimeseriesSetupJasmin.ipynb](jasmin/PredictTimeseriesSetupJasmin.ipynb) will help you open the dataset. This data comes from a historical simulation of the Met Office coupled climate model UKESM. 
 
 ```python
 data_path = "/badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/day/tas/gn/v20190627/"
@@ -40,10 +33,12 @@ filename = f"{data_path}tas_day_UKESM1-0-LL_historical_r1i1p1f2_gn_19500101-2014
 ds = xr.open_mfdataset(filename)
 ```
 
+In case there are issues on jasmin, there is some CMIP data already pre-processed in the `./local/data/` directory. This contains monthly averaged data from the historical simulation of the Met Office climate model HadGEM. The jupyter notebook [local/PredictTimeseriesSetupLocal.ipynb](local/PredictTimeseriesSetupLocal.ipynb) will help you get started with this data.
+
 
 ## Spatial pattern approach
 
-For longer term predictions in 2100, we need to consider global warming. Assume that in 2100, the global mean temperature will be ~1.5K warmer than today (or ~3.0K warmer than pre-industrial levels) [IPCC, 2021]. The jupyter notebook PredictSpatialPatternSetup.ipynb will help you open two climate model datasets: one from a pre-industrial climate simulation and one from a 4xCO2 climate simulation. 
+For longer term predictions in 2100, we need to consider global warming. Assume that in 2100, the global mean temperature will be ~1.5K warmer than today (or ~3.0K warmer than pre-industrial levels) [IPCC, 2021]. The jupyter notebook [jasmin/PredictSpatialPatternSetupJasmin.ipynb](jasmin/PredictSpatialPatternSetupJasmin.ipynb) will help you open two climate model datasets: one from a pre-industrial climate simulation and one from a 4xCO2 climate simulation. 
 
 ```python
 # Pre-industrial (PI) simulation
@@ -56,6 +51,8 @@ data_path_4xCO2 = "/badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/abrupt-4xCO2/r1i
 filename_4xCO2 = f"{data_path_4xCO2}tas_Amon_UKESM1-0-LL_abrupt-4xCO2_r1i1p1f2_gn_195001-199912.nc"
 ds_4xCO2 = xr.open_dataset(filename_4xCO2)
 ```
+
+In case there are issues on jasmin, I have also added the time mean of this data into the `./local/data/` directory of this repository. See [local/PredictSpatialPatternSetupLocal.ipynb](local/PredictSpatialPatternSetupLocal.ipynb).
 
 With a technique called "Pattern Scaling", you can interpolate between these two to estimate the global map of climate change for a given CO2 forcing scenario (Santer, 1990, Mitchell, 2003, Tebaldi & Arblaster, 2014). Pattern scaling assumes that the pattern of warming remains constant but scales linearly by a scaler variable, such as global mean temperature. The steps are:
 

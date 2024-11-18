@@ -2,7 +2,7 @@
 
 You must use jasmin for this tutorial.
 
-Imagine you work for the Met Office and a client (e.g., from agriculture, utilities companies, finance) has asked you predict the temperature in Oxford, UK on 19th November 2025 and on 19th November 2100. You have access to data from climate model simulations (CMIP), but you can use data from other sources if you wish. The different timescales require different approaches.
+Imagine you work for the Met Office and a client (e.g., from agriculture, utilities companies, finance) has asked you predict the temperature in Oxford, UK on 19th November 2025 and on 19th November 2100. You have access to data from climate model simulations (CMIP) available on Jasmin at `/badc/cmip6/data/CMIP6/CMIP/` or downloaded from [the Climate Data Store (cds)](https://cds.climate.copernicus.eu/datasets/projections-cmip6?tab=download). You are welcome to use data from any other source if you wish. The different timescales require different approaches.
 
 Think about: 
 * What data and methods would you use here?
@@ -14,7 +14,16 @@ Think about:
 
 ## Time series approach
 
-To predict the temperature at a specific location on 19th November 2025, we can use daily data in time series format. The jupyter notebook PredictTimeseriesSetup.ipynb will help you open the dataset. This data comes from a historical simulation of a climate model. 
+To predict the temperature at a specific location on 19th November 2025, we can time series data to inform us about the historical temperatures in this location.
+
+There is some CMIP data already pre-processed in the `./data/` directory. This contains monthly averaged data from the historical simulation of the Met Office climate model HadGEM. The jupyter notebook PredictTimeseriesSetup.ipynb will help you get started with this data
+```python
+data_path = "./data/"
+filename = f"{data_path}t_CMIP6_historical_HadGEM3-GC31-LL_mon_195001-201412_UK.nc"
+ds = xr.open_dataset(filename)
+```
+
+If you are using jasmin, the jupyter notebook PredictTimeseriesJasmin.ipynb will help you open the dataset. This data comes from a historical simulation of the Met Office coupled climate model UKESM. 
 
 ```python
 data_path = "/badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/day/tas/gn/v20190627/"

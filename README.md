@@ -11,7 +11,11 @@ Think about:
 
 You can either work locally or on Jasmin. 
 ### Set up: local
-
+To use these notebooks on your local macbook, you will need to have a few packages. You can use the same conda environment `iecdt_eda` you set up in week 3:
+```zsh
+conda env update -n iecdt_eda --file environment.yaml  
+conda activate iecdt_eda
+```
 
 ### Set up: Jasmin
 Go to [https://notebooks.jasmin.ac.uk/](https://notebooks.jasmin.ac.uk/) and start a jupyter notebook. Packages should already be installed on `jaspy`. You should automatically have access to the CMIP data. 

@@ -12,5 +12,6 @@ dependencies:
   - cartopy
   - scipy
   - pip
+  - netcdf4
   - pip:
     - xarray-regrid
